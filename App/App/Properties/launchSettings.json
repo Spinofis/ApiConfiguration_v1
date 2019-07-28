@@ -4,8 +4,8 @@
     "windowsAuthentication": false, 
     "anonymousAuthentication": true, 
     "iisExpress": {
-      "applicationUrl": "http://localhost:64302",
-      "sslPort": 44383
+      "applicationUrl": "http://localhost:56081",
+      "sslPort": 44369
     }
   },
   "profiles": {
@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "ApiConfiguration": {
+    "App": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "api/values",
