@@ -23,5 +23,12 @@ namespace App.Controllers
             var stream = service.DownloadFile(name);
             return File(stream.Stream.ToArray(), stream.ContentType);
         }
+
+        [HttpPost("directory")]
+        public IActionResult CreateAzureContainer([FromBody]List<string> folders)
+        {
+            service.CreateAzureDirectory(folders);
+            return Ok();
+        }
     }
 }

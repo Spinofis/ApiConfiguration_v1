@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\App.AzureStorageManager\App.AzureStorageManager.csproj" />
-    <ProjectReference Include="..\..\App.Base\App.Base.csproj" />
+    <PackageReference Include="Microsoft.Azure.Storage.Blob" Version="11.0.0" />
+    <PackageReference Include="Microsoft.Azure.Storage.File" Version="11.0.0" />
   </ItemGroup>
 
 </Project>

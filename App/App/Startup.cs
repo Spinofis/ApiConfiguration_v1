@@ -31,6 +31,8 @@ namespace App
             services.AddAppServices();
 
             services.AddSwagger();
+
+            services.AddAzureStorageManager(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
