@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using App.Services.Files;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,18 @@ namespace App.Controllers
     [Route("api/files")]
     public class FilesController : ControllerBase
     {
+        private IFileService service;
+
+        public FilesController(IFileService service)
+        {
+            this.service = service;
+        }
+
         [HttpGet("{name}")]
         public IActionResult DownloadFile(string name)
         {
-            //return File()
+            var stream = service.DownloadFile(name);
+            return File(stream.Stream.ToArray(), stream.ContentType);
         }
     }
 }

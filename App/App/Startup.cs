@@ -47,7 +47,8 @@ namespace App
 
             app.ConfigureSwagger();
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
+
             app.UseMvc();
         }
     }

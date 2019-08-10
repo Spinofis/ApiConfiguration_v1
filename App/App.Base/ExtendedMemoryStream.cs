@@ -5,7 +5,7 @@ using System.Text;
 
 namespace App.Base.Extensions
 {
-    public class ExtendedMemoryStream
+    public class ExtendedMemoryStream : IDisposable
     {
         public string Name { get; set; }
 
@@ -18,6 +18,12 @@ namespace App.Base.Extensions
             Name = name;
             Stream = stream;
             ContentType = contentType;
+        }
+
+        public void Dispose()
+        {
+            if (Stream != null)
+                Stream.Dispose();
         }
     }
 }
