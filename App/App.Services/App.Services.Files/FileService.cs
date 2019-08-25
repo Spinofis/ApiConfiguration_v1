@@ -1,5 +1,6 @@
 ﻿using App.AzureStorageManager;
 using App.Base.Extensions;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,25 +9,33 @@ namespace App.Services.Files
 {
     public class FileService : IFileService
     {
-        IAzureFileManager azureStorageManager;
+        IAzureFileManager azureFileManager;
 
         public FileService(IAzureFileManager azureStorageManager)
         {
-            this.azureStorageManager = azureStorageManager;
+            this.azureFileManager = azureStorageManager;
         }
 
-        public ExtendedMemoryStream DownloadFile(string name)
+        public ExtendedMemoryStream DownloadFile(string path)
         {
-            var bytes = File.ReadAllBytes(Path.Combine(@"C:\Users\Bartek\Desktop", name));
+            var bytes = azureFileManager.DownloadFile(path);
             var stream = new MemoryStream(bytes);
             var contentType = "application/octet-stream";
-            return new ExtendedMemoryStream(name, stream, contentType);
+            return new ExtendedMemoryStream(path, stream, contentType);
         }
-
 
         public void CreateAzureDirectory(List<string> folders)
         {
-            azureStorageManager.CreateDirectoryAsync(string.Join("/", folders));
+            azureFileManager.CreateDirectory(string.Join("/", folders));
+        }
+
+        public void UploadFile(IFormFile file, string folder)
+        {
+            using (var ms = new MemoryStream())
+            {
+                file.CopyTo(ms);
+                azureFileManager.UploadFile(Path.Combine(folder, file.FileName), ms.ToArray());
+            }
         }
     }
 

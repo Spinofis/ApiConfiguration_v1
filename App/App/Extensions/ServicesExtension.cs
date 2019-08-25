@@ -29,13 +29,5 @@ namespace App.Extensions
                     x => new AzureStorageManager.AzureFileManager(azureKey, rootDir)
                 );
         }
-
-        public static void AddSwagger(this IServiceCollection services)
-        {
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
-            });
-        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using App.Services.Files;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -28,6 +29,13 @@ namespace App.Controllers
         public IActionResult CreateAzureContainer([FromBody]List<string> folders)
         {
             service.CreateAzureDirectory(folders);
+            return Ok();
+        }
+
+        [HttpPost("upload")]
+        public IActionResult UploadFile(IFormFile file,string folder)
+        {
+            service.UploadFile(file,folder);
             return Ok();
         }
     }

@@ -7,6 +7,10 @@ namespace App.AzureStorageManager
 {
     public interface IAzureFileManager
     {
-        void CreateDirectoryAsync(string name);
+        void CreateDirectory(string name);
+
+        void UploadFile(string path, byte[] bytes);
+
+        byte[] DownloadFile(string path);
     }
 }
