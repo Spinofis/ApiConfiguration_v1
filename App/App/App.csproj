@@ -10,15 +10,16 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Storage.Blob" Version="11.0.0" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0-rc2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.11" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="4.0.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\App.AzureStorageManager\App.AzureStorageManager.csproj" />
     <ProjectReference Include="..\App.Services\App.Services.Files\App.Services.Files.csproj" />
     <ProjectReference Include="..\App.Services\App.Services.Test1\App.Services.Test1.csproj" />
+    <ProjectReference Include="..\EntityFrameworkModel\EntityFrameworkModel.csproj" />
   </ItemGroup>
 
 </Project>
