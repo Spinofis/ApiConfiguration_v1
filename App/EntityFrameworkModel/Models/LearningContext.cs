@@ -23,9 +23,7 @@ namespace EntityFrameworkModel.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            LoggerFactory loggerFactory = new LoggerFactory();
-            loggerFactory.AddProvider(new TraceLoggerProvider());
-            optionsBuilder.UseLoggerFactory(loggerFactory);
+            
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

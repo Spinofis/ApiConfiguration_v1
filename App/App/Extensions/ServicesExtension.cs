@@ -1,12 +1,13 @@
 ﻿using App.AzureStorageManager;
 using App.Services.Files;
 using App.Services.Test1;
+using EntityFrameworkModel.Logger;
 using EntityFrameworkModel.Models;
 using Microsoft.EntityFrameworkCore;
 //using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,9 +20,14 @@ namespace App.Extensions
 
         public static void AddDbContext(this IServiceCollection services, IConfiguration config)
         {
+            LoggerFactory loggerFactory = new LoggerFactory();
+            loggerFactory.AddProvider(new TraceLoggerProvider());
+
             services.AddDbContext<LearningContext>(options =>
             {
-                options.UseSqlServer(config.GetSection("SqlServer").GetValue<string>("ConnectionString"));
+                options
+                .UseSqlServer(config.GetSection("SqlServer").GetValue<string>("ConnectionString"))
+                .UseLoggerFactory(loggerFactory);
             });
         }
 

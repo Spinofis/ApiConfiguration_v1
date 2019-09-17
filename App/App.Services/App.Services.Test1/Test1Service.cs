@@ -11,7 +11,7 @@ namespace App.Services.Test1
     {
         LearningContext context;
 
-        Test1Service(LearningContext context)
+        public Test1Service(LearningContext context)
         {
             this.context = context;
         }

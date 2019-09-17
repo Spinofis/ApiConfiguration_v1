@@ -8,6 +8,9 @@ namespace App.Services.Test1
     public interface ITest1Serivice
     {
         string GetValue(int id);
+
         void AddTest1(Test1DTO test1);
+
+        List<CityDTO> GetCities();
     }
 }

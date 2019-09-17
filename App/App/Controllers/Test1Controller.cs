@@ -11,24 +11,30 @@ namespace App.Controllers
     [Route("api/test1")]
     public class Test1Controller : ControllerBase
     {
-        private ITest1Serivice businessLogic;
+        private ITest1Serivice service;
 
-        public Test1Controller(ITest1Serivice businessLogic)
+        public Test1Controller(ITest1Serivice service)
         {
-            this.businessLogic = businessLogic;
+            this.service = service;
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetValue(int id)
+        public ActionResult GetValue(int id)
         {
-            return Ok(businessLogic.GetValue(id));
+            return Ok(service.GetValue(id));
         }
 
         [HttpPost]
-        public IActionResult AddTest1([FromBody]Test1DTO test1)
+        public ActionResult AddTest1([FromBody]Test1DTO test1)
         {
-            businessLogic.AddTest1(test1);
+            service.AddTest1(test1);
             return Ok();
+        }
+
+        [HttpGet("cities")]
+        public ActionResult GetCities()
+        {
+            return Ok(service.GetCities());
         }
     }
 }

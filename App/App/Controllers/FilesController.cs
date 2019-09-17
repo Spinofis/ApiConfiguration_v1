@@ -19,21 +19,21 @@ namespace App.Controllers
         }
 
         [HttpGet("{name}")]
-        public IActionResult DownloadFile(string name)
+        public ActionResult DownloadFile(string name)
         {
             var stream = service.DownloadFile(name);
             return File(stream.Stream.ToArray(), stream.ContentType);
         }
 
         [HttpPost("directory")]
-        public IActionResult CreateAzureContainer([FromBody]List<string> folders)
+        public ActionResult CreateAzureContainer([FromBody]List<string> folders)
         {
             service.CreateAzureDirectory(folders);
             return Ok();
         }
 
         [HttpPost("upload")]
-        public IActionResult UploadFile(IFormFile file,string folder)
+        public ActionResult UploadFile(IFormFile file,string folder)
         {
             service.UploadFile(file,folder);
             return Ok();
